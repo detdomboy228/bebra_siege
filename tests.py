@@ -11,7 +11,7 @@ snd_dir = path.join(path.dirname(__file__), 'snd')
 
 WIDTH = 1920
 HEIGHT = 1080
-FPS = 60
+FPS = 59
 
 WHITE = (255, 255, 255)
 BLACK = (16, 16, 16)
