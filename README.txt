@@ -1,0 +1,1 @@
+You need to create a folder called "myg" and extract the pictures from folders "1" and "2" into her.
