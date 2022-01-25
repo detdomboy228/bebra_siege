@@ -775,7 +775,8 @@ class Giant(pygame.sprite.Sprite):
                 self.kill()
                 GIG = False
 
-
+# инициализация всех медиафайлов
+                
 a = True
 if a:
     pygame.init()
@@ -926,6 +927,9 @@ if a:
 
     font_name = 'myg/minecraft.ttf'
 
+    
+# вспомогательные функции и функции, отвечающие за экраны и переходы между ними
+    
 
 def draw_text(surf, text, size, x, y, color):
     font = pygame.font.Font(font_name, size)
