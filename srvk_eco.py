@@ -31,7 +31,7 @@ name = ''
 
 # классы объектов игры
 
-
+# класс пуль
 class Bullet(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
@@ -75,7 +75,8 @@ class Bullet(pygame.sprite.Sprite):
                     GIG_HP -= 1
                 self.kill()
 
-
+                
+# класс плота на второй локации
 class Plot(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -92,6 +93,7 @@ class Plot(pygame.sprite.Sprite):
         self.rect.x += self.speedx
 
 
+# класс игрока нашей игры
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -267,6 +269,7 @@ class Player(pygame.sprite.Sprite):
                     self.image.set_colorkey(GREEN)
 
 
+# анимация "ульты" - быстрые белые полосы у экрана                    
 class UltAnim(pygame.sprite.Sprite):
     def __init__(self, center):
         pygame.sprite.Sprite.__init__(self)
@@ -295,6 +298,7 @@ class UltAnim(pygame.sprite.Sprite):
             player.ult1 = False
 
 
+# класс каменной стены в игре
 class Wall(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -311,6 +315,7 @@ class Wall(pygame.sprite.Sprite):
             self.image.set_colorkey(WHITE)
 
 
+# класс самых обычных врагов            
 class Mob(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -416,6 +421,7 @@ class Mob(pygame.sprite.Sprite):
             self.rect.y += self.speedy
 
 
+# класс взрыва у дула ружья при выстреле
 class BullExpl(pygame.sprite.Sprite):
     def __init__(self, midright):
         pygame.sprite.Sprite.__init__(self)
@@ -452,6 +458,7 @@ class BullExpl(pygame.sprite.Sprite):
                     self.rect.midright = midright
 
 
+# класс облаков, которые вылезают при слоумо
 class Smoke(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -497,6 +504,7 @@ class Smoke(pygame.sprite.Sprite):
             slowing.stop()
 
 
+# класс затемнения экрана при слоумо
 class Sumrak(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -510,6 +518,7 @@ class Sumrak(pygame.sprite.Sprite):
             player.slow = False
 
 
+# класс вылетающей гильзы при выстреле
 class Gilza(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
@@ -585,6 +594,7 @@ class Gilza(pygame.sprite.Sprite):
                         self.rect.y -= self.b
 
 
+# класс искр, вылетающих при смене направления движения игрока
 class Iscrs(pygame.sprite.Sprite):
     def __init__(self, center):
         pygame.sprite.Sprite.__init__(self)
@@ -613,6 +623,7 @@ class Iscrs(pygame.sprite.Sprite):
                     self.rect.center = center
 
 
+# класс анимации смерти обычного врага при попадании пули                    
 class EnDeath(pygame.sprite.Sprite):
     def __init__(self, center):
         pygame.sprite.Sprite.__init__(self)
@@ -654,6 +665,7 @@ class EnDeath(pygame.sprite.Sprite):
             self.kill()
 
 
+# класс анимации смерти обычного врага при ударе об стену           
 class EnDeath2(pygame.sprite.Sprite):
     def __init__(self, center):
         pygame.sprite.Sprite.__init__(self)
@@ -695,6 +707,7 @@ class EnDeath2(pygame.sprite.Sprite):
             self.kill()
 
 
+# класс анимации таймстопа            
 class DIO(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
@@ -724,6 +737,7 @@ class DIO(pygame.sprite.Sprite):
             zaward.stop()
 
 
+# класс для босса мобов            
 class Giant(pygame.sprite.Sprite):
     def __init__(self):
         global name
@@ -929,7 +943,10 @@ if a:
 
     
 # вспомогательные функции и функции, отвечающие за экраны и переходы между ними
+   
     
+# отрисовка текста
+
 
 def draw_text(surf, text, size, x, y, color):
     font = pygame.font.Font(font_name, size)
@@ -939,6 +956,9 @@ def draw_text(surf, text, size, x, y, color):
     surf.blit(text_surface, text_rect)
 
 
+# отрисовка различных шкал
+    
+    
 def draw_shield_bar(surf, x, y, pct, lenght, maxhp):
     if pct < 0:
         pct = 0
@@ -966,6 +986,9 @@ def draw_shield_bar(surf, x, y, pct, lenght, maxhp):
     pygame.draw.rect(surf, WHITE, outline_rect, 2)
 
 
+# функция главного экрана
+    
+    
 def screeeen():
     screen.blit(back_main, background_rect)
     draw_text(screen, "BEBRA SIEGE", 100, WIDTH / 2, HEIGHT / 4, RED)
@@ -996,6 +1019,9 @@ def screeeen():
                     waiting = False
 
 
+# класс окна после смерти игрока          
+                    
+                    
 def game_over():
     global GIG, GIG_HP, con, toright, b, c
     musik.stop()
@@ -1029,6 +1055,9 @@ def game_over():
                     sys.exit()
 
 
+# класс экрана после побега игрока
+                    
+                    
 def happy_over():
     global GIG, GIG_HP, con, toright, b, c
     musik2.stop()
@@ -1080,6 +1109,9 @@ def happy_over():
         pygame.display.flip()
 
 
+# класс паузы
+        
+        
 def pause():
     if not seconds:
         musik.set_volume(0)
@@ -1110,6 +1142,9 @@ def pause():
                     zaward.set_volume(1)
 
 
+# класс окна рекордов
+                    
+                    
 def records():
     global con
     screen.blit(back_wow, background_rect)
@@ -1138,6 +1173,9 @@ def records():
                     screeeen()
 
 
+# класс перехода с 1 локации на 2
+                    
+                    
 def second():
     global seconds, sprites, players, player, gigant, plotik, mobs, stop, end, b_anims, abil_stop
     abil_stop = True
